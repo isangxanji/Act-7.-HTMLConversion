@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HealthCare+ Help & Support</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f9ff;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background-color: white;
+      color: #2563eb;
+      padding: 30px 20px;
+      border-right: 1px solid #e0e0e0;
+    }
+
+    .sidebar-logo {
+      margin-bottom: 30px;
+    }
+
+    .logo-title {
+      font-size: 22px;
+      font-weight: bold;
+      color: #2563eb;
+    }
+
+    .logo-subtitle {
+      font-size: 14px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+
+    .nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      color: #2563eb;
+    }
+
+    .nav-item:hover {
+      background-color: #e0f2ff;
+    }
+
+    /* .nav-item.active {
+      background-color: #2563eb;
+      color: white;
+      font-weight: bold;
+    } */
+
+    .nav-item.logout {
+      color: #ef4444;
+    }
+
+    .nav-item.logout:hover {
+      background-color: #fef2f2;
+    }
+
+    /* Topbar */
+    /* .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: white;
+      padding: 16px 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .topbar-left {
+      font-size: 18px;
+      font-weight: bold;
+      color: #2563eb;
+    }
+
+    .topbar-center {
+      position: relative;
+      flex: 1;
+      max-width: 400px;
+      margin: 0 30px;
+    }
+
+    .topbar-center input {
+      width: 100%;
+      padding: 10px 40px 10px 12px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: #888;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .icon-bell {
+      position: relative;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .dot {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 8px;
+      height: 8px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .icon-user {
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .header-right img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ccc;
+      cursor: pointer;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .bell {
+      position: relative;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .dot {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 10px;
+      height: 10px;
+      background: red;
+      border-radius: 50%;
+    }
+    .user-icon {
+      font-size: 20px;
+      cursor: pointer;
+    } */
+  /* Header Bar */
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .header-left {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .header-center input {
+      width: 300px;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .header-right img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ccc;
+      cursor: pointer;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .bell {
+      position: relative;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .dot {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 10px;
+      height: 10px;
+      background: red;
+      border-radius: 50%;
+    }
+    .user-icon {
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .icon-img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    margin-right: 4px;
+    }
+
+    .sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #2563eb;
+    padding: 10px 8px;
+    border-radius: 6px;
+    font-size: 15px;
+    }
+
+    .sidebar a:hover {
+    background-color: #e0f2ff;
+    }
+
+    .brand h1 {
+    font-size: 22px;
+    color: #2563eb;
+    margin: 0;
+    }
+
+    .brand small {
+    display: block;
+    font-size: 14px;
+    color: hsl(220, 9%, 46%); /* soft gray like the picture */
+    margin-top: 2px;
+    margin-top: 8px;
+    }
+
+    .brand {
+    margin-bottom: 23px;
+    }
+
+
+
+
+
+    /* Main Content */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content-area {
+      display: flex;
+      padding: 40px;
+      gap: 40px;
+    }
+
+    .support-content {
+      flex: 2;
+    }
+
+    .support-content h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      color: #2563eb;
+    }
+
+    .support-content p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 30px;
+    }
+
+    .faq-category {
+      margin-bottom: 30px;
+    }
+
+    .faq-category h3 {
+      font-size: 18px;
+      color: #2563eb;
+      margin-bottom: 10px;
+    }
+
+    .faq-category ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .faq-category li {
+      margin-bottom: 8px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .faq-category li:hover {
+      text-decoration: underline;
+    }
+
+    /* Right Panel */
+    .support-info {
+      flex: 1;
+      background-color: #e0f2ff;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    .support-info h3 {
+      font-size: 18px;
+      color: #2563eb;
+      margin-bottom: 15px;
+    }
+
+    .support-info p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .quick-links ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .quick-links li {
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #2563eb;
+      cursor: pointer;
+    }
+
+    .quick-links li:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1e3a8a;
+      color: white;
+      font-size: 14px;
+    }
+
+    
+  </style>
+</head>
+<body>
+
+
+  <div class="container">
+    <!-- Sidebar -->
+      <aside class="sidebar" aria-label="Sidebar navigation">
+
+    <div class="brand">
+      <h1>HealthCare+</h1>
+      <small>Appointment System</small>
+    </div> <!-- FIXED: closed brand div -->
+
+    <nav class="nav" aria-label="Primary">
+
+      <a href="Dashboard.html" class="active">
+        <img src="img/dashboard-76.png" class="icon-img"> Dashboard
+      </a>
+
+      <a href="Appointment.html">
+        <img src="img/appointment-4.png" class="icon-img"> Appointment
+      </a>
+
+      <a href="Analytics.html">
+        <img src="img/analytics-7.png" class="icon-img"> Analytics
+      </a>
+
+      <a href="Profile.html">
+        <img src="img/user-profile.png" class="icon-img"> Profile
+      </a>
+
+      <div class="help-logout">
+        <a href="help.html">
+          <img src="img/help-85.png" class="icon-img"> Help
+        </a>
+
+        <a href="logout.html" id="logout">
+          <img src="img/logout-24.png" class="icon-img"> Logout
+        </a>
+      </div>
+
+    </nav> <!-- FIXED: nav properly closed -->
+
+  </aside>
+
+    <!-- Main Content -->
+    <div class="main">
+
+      <!-- Header Bar -->
+      <div class="header-bar">
+        <div class="header-left">Help & Support</div>
+        <div class="header-center">
+          <input type="text" placeholder="Search..." />
+        </div>
+        <div class="header-right">
+          <div class="bell">🔔<span class="dot"></span></div>
+          <img src="c:\Users\PRINCESS\Downloads\mingyu.jpg" alt="Profile" class="profile-pic" />
+        </div>
+      </div>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <div class="support-content">
+            <h1>How can we help you?</h1>
+            <p>Search our FAQ or contact support for assistance</p>
+
+            <div class="search-bar">
+                <input type="text" placeholder="Search for answers..." />
+        </div>
+
+
+          <div class="faq-category">
+            <h3>Booking</h3>
+            <ul>
+              <li>How do I book an appointment?</li>
+              <li>Can I book appointments for family members?</li>
+              <li>How far in advance can I book?</li>
+            </ul>
+          </div>
+
+          <div class="faq-category">
+            <h3>Cancellation</h3>
+            <ul>
+              <li>How do I cancel an appointment?</li>
+              <li>Is there a cancellation fee?</li>
+            </ul>
+          </div>
+
+          <div class="faq-category">
+            <h3>Technical</h3>
+            <ul>
+              <li>I forgot my password. What should I do?</li>
+              <li>How do I update my profile information?</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="support-info">
+          <h3>Contact Support</h3>
+          <p>Can’t find what you’re looking for? Get in touch with our support team.</p>
+          <p><strong>Email Us:</strong> support@healthcare.com</p>
+          <p><strong>Call Us:</strong> 0957-584286</p>
+
+          <h3>Support Hours</h3>
+          <p>Monday - Friday: 8:00 AM - 4:00 PM</p>
+          <p>Saturday: 8:00 AM - 5:00 PM</p>
+          <p>Sunday: Closed</p>
+
+          <h3>Quick Links</h3>
+          <div class="quick-links">
+            <ul>
+              <li>Privacy Policy</li>
+              <li>Terms of Service</li>
+              <li>Cancellation Policy</li>
+              <li>Patient Rights</li>
+            </ul>
+          </div>
+        </div>
+      </div> <!-- end content-area -->
+
+      <!-- Footer -->
+      <footer>
+        © 2025 HealthCare+. All rights reserved.
+      </footer>
+    </div> <!-- end main -->
+  </div> <!-- end container -->
+
+</body>
+</html>

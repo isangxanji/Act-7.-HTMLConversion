@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HealthCare+ — Create Account</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --primary-hover: #1e40af;
+      --border: #e5e7eb;
+      --focus: #93c5fd;
+      --danger: #dc2626;
+      --success: #16a34a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 440px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .brand p {
+      margin: 0.5rem 0 0;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+      padding: 1.25rem;
+    }
+
+    .card h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.25rem;
+    }
+
+    form {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    label {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      font-size: 1rem;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--focus);
+      box-shadow: 0 0 0 3px rgba(147,197,253,0.4);
+    }
+
+    .hint {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-top: 0.25rem;
+    }
+
+    .checkbox-row input[type="checkbox"] {
+      margin-top: 0.15rem;
+      width: 1rem;
+      height: 1rem;
+      accent-color: var(--primary);
+    }
+
+    .link {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .link:hover { text-decoration: underline; }
+
+    .actions {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 0.25rem;
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.02s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-primary:active { transform: translateY(1px); }
+
+    .footer-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    .back {
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .back:hover { color: var(--text); }
+
+    /* Simple responsive spacing tweak */
+    @media (max-width: 420px) {
+      .container { margin: 2rem auto; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container" aria-labelledby="title">
+    <header class="brand">
+      <h1 id="title">HealthCare+</h1>
+      <p>Join us to start managing your healthcare</p>
+    </header>
+
+    <section class="card" aria-labelledby="create-account">
+      <h2 id="create-account">Create account</h2>
+
+      <form action="/signup" method="post" novalidate>
+        <div class="field">
+          <label for="fullName">Full name</label>
+          <input id="fullName" name="fullName" type="text" placeholder="John Doe" autocomplete="name" required />
+        </div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="your.email@example.com" autocomplete="email" required />
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <input id="phone" name="phone" type="tel" placeholder="(555) 123-4567" autocomplete="tel" inputmode="tel" />
+        </div>
+
+        <div class="field">
+          <label for="role">Role</label>
+          <select id="role" name="role" required>
+            <option value="patient" selected>Patient</option>
+            <option value="provider">Provider</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Create a strong password" autocomplete="new-password" required />
+          <div class="hint">Use at least 12 characters with a mix of letters, numbers, and symbols.</div>
+        </div>
+
+        <div class="field">
+          <label for="confirmPassword">Confirm password</label>
+          <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm your password" autocomplete="new-password" required />
+        </div>
+
+        <div class="checkbox-row">
+          <input id="tos" name="tos" type="checkbox" required />
+          <label for="tos">I agree to the <a class="link" href="/terms" target="_blank" rel="noopener">Terms of Service</a> and <a class="link" href="/privacy" target="_blank" rel="noopener">Privacy Policy</a></label>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Create account</button>
+
+          <div class="footer-links" aria-label="Account links">
+            <a class="link" href="/signin">Already have an account? Sign in here</a>
+            <a class="back" href="/">&#8592; Back to home</a>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
